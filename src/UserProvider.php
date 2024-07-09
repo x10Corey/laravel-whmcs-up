@@ -18,7 +18,15 @@ class UserProvider implements BaseProvider
         $this->client = app('whmcs');
     }
     
-    public function rehashPasswordIfRequired(Authenticatable $user, array $credentials): void
+/**
+ * Rehash the user's password if required.
+ *
+ * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
+ * @param  array  $credentials
+ * @param  bool  $force
+ * @return void
+ */
+    public function rehashPasswordIfRequired(Authenticatable $user, array $credentials, bool $force = false): void
     {
         // WHMCS likely handles password hashing internally, so this method can be left empty
         // or implement custom logic if needed
